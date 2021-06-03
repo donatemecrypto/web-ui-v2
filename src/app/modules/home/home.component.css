@@ -1,0 +1,133 @@
+/* :root {
+  --show-qr: 1;
+  --show-text: 0;
+  --show-qr-after-hover: 0;
+  --show-text-after-hover: 40%;
+} */
+
+/* :root {
+  --show-qr: 0;
+  --show-text: 40%;
+  --show-qr-after-hover: 1;
+  --show-text-after-hover: 0;
+} */
+
+/* services */
+
+#service{
+    width:100%;
+    padding: 70px 0;
+}
+  
+.service-box{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: auto;
+}
+  
+.single-service {
+    flex-basis: 30%;
+    text-align: center;
+    border-radius: 7px;
+    margin-bottom: 40px;
+    color: #fff;
+    position: relative;
+}
+  
+.close-btn {
+    position: absolute;
+    color: #000;
+    top: 3px;
+    right: 3px;
+    font-size: 20px;
+    z-index: 999;
+    display: block;
+}
+  
+.close-btn i {
+    font-size: 18px;
+}
+  
+.single-service img {
+    width: 100%;
+    border-radius: 7px;
+}
+  
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    border-radius: 7px;
+    cursor: pointer;
+    background: linear-gradient(rgba(0,0,0,0.5),var(--primary));
+    opacity: var(--show-qr);
+    transition: 1s;
+}
+  
+  
+.overlay button {
+    margin: 30px;
+    background-color: var(--primary);
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+  
+  
+/* .single-service:hover .overlay{
+    opacity: var(--show-qr-after-hover);
+} */
+  
+.service-desc {
+    width: 80%;
+    color: #fff;
+    position: absolute;
+    bottom:  var(--show-text-after-hover);
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: var(--show-qr);
+    transition: 1s;
+}
+  
+hr {
+    background: #fff;
+    height: 2px;
+    border: 0;
+    margin: 15px auto;
+    width: 60%;
+}
+  
+.service-desc p {
+    font-size: 14px;
+}
+  
+/* .single-service:hover .service-desc {
+   bottom: var(--show-text);
+   opacity: var(--show-qr-after-hover);
+} */
+  
+  
+@media screen and (max-width: 770px) {
+    .single-service{
+        flex-basis: 100%;
+        margin-bottom: 30px;
+    }
+    .service-desc p {
+        font-size: 12px;
+    }
+    hr {
+        margin: 5px auto;
+    }
+    .single-service:hover .service-desc {
+        border: 25% im !important;
+    }
+}
