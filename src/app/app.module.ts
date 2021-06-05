@@ -11,6 +11,7 @@ import {
   FooterComponent,
   HeaderComponent,
   SideNavComponent,
+  TopNavComponent,
   SharedModule,
 } from './shared';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +25,8 @@ export function initializeApp(appConfig: AppConfig) {
     AppComponent, 
     FooterComponent, 
     HeaderComponent, 
-    SideNavComponent
+    SideNavComponent,
+    TopNavComponent
   ],
   imports: [
     BrowserModule,

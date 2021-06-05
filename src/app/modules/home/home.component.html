@@ -1,68 +1,25 @@
         <!-- Service -->
         <section id="service">
             <div class="title-text">
-                <p>{{this.title}}</p>
-                <h1>We Provide Better</h1>
+                <p>Dear Elon</p>
+                <h1>Please Stop</h1>
             </div>
             <div class="service-box">
-                <div class="single-service">
-                    <div id="btc_qrhide" #btc_qrhide class="close-btn"><strong><i class="fa fa-times-circle"></i></strong></div>
-                    <img src="assets/images/qrcode/qr-code-btc.png" alt="">
-                    <div id="btc_overlay" #btc_overlay class="overlay">
-                        <button id="btc_qrview" #btc_qrview>View QR Code</button>
-                        <button id="btc_addrcp" #btc_addrcp>Copy Address</button>
+                <app-home-qrcode class="single-service" *ngFor="let crypto of cryptoData" [data]="crypto"></app-home-qrcode>
+            </div>
+            <!-- <div class="service-box">
+                <div class="single-service" *ngFor="let crypto of cryptoData">
+                    <div id="qrhide_{{crypto.coin}}_{{crypto.address}}" #btc_qrhide class="close-btn"><strong><i class="fa fa-times-circle"></i></strong></div>
+                    <img src="{{crypto.image}}" alt="">
+                    <div id="overlay_{{crypto.coin}}_{{crypto.address}}" #btc_overlay class="overlay">
+                        <button id="qrview_{{crypto.coin}}_{{crypto.address}}" #btc_qrview>View QR Code</button>
+                        <button id="addrcp_{{crypto.coin}}_{{crypto.address}}" #btc_addrcp>Copy Address</button>
                         <div class="service-desc">
-                            <h3 id="btc_address_id" #btc_address_id>Hair Styling</h3>
+                            <h3 id="address_id_{{crypto.coin}}_{{crypto.address}}" #btc_address_id>{{crypto.address}}</h3>
                             <hr>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, corporis magnam fugit, expedita ad exercitationem</p>
+                            <p>{{crypto.message.objective}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="single-service">
-                    <img src="assets/images/qrcode/qr-code-bch.png" alt="">
-                    <div class="overlay"></div>
-                    <div class="service-desc">
-                        <h3>Hair Cut</h3>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, corporis magnam fugit, expedita ad exercitationem</p>
-                    </div>
-                </div>
-                <div class="single-service">
-                    <img src="assets/images/qrcode/qr-code-eth.png" alt="">
-                    <div class="overlay"></div>
-                    <div class="service-desc">
-                        <h3>Beard Trim</h3>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, corporis magnam fugit, expedita ad exercitationem</p>
-                    </div>
-                </div>
-                <div class="single-service">
-                    <img src="assets/images/qrcode/qr-code-xrp.png" alt="">
-                    <div class="overlay"></div>
-                    <div class="service-desc">
-                        <h3>Dry Shampoo</h3>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, corporis magnam fugit, expedita ad exercitationem</p>
-                    </div>
-                </div>
-                <div class="single-service">
-                    <img src="assets/images/qrcode/qr-code-ltc.png" alt="">
-                    <div class="overlay"></div>
-                    <div class="service-desc">
-                        <h3>Dry Shampoo</h3>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, corporis magnam fugit, expedita ad exercitationem</p>
-                    </div>
-                </div>
-                <div class="single-service">
-                    <img src="assets/images/qrcode/qr-code-bch.png" alt="">
-                    <div class="overlay"></div>
-                    <div class="service-desc">
-                        <h3>Dry Shampoo</h3>
-                        <hr>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, corporis magnam fugit, expedita ad exercitationem</p>
-                    </div>
-                </div>
-                
-            </div>
+            </div> -->
         </section>

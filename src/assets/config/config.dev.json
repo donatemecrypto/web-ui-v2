@@ -1,22 +1,11 @@
 {
     "env": {
-    "name": "DEV"
-     },
-    "appInsights": {
-    "instrumentationKey": "<dev-guid-here>"
-     },
-    "logging": {
-    "console": true,
-    "appInsights": false
+        "name": "dev"
     },
-    "aad": {
-        "name": "Miqdaad",
-        "requireAuth": true,
-        "tenant": "<dev-guid-here>",
-        "clientId": "<dev-guid-here>"
+    "logging": {
+        "console": true
     },
     "apiServer": {
-    "metadata": "https://metadata.demo.com/api/v1.0/",
-    "rules": "https://rules.demo.com/api/v1.0/"
+        "cryptodata": "http://localhost:3000"
     }
 }

@@ -1,0 +1,13 @@
+<div class="single-service">
+    <div #btc_qrhide class="close-btn"><strong><i class="fa fa-times-circle"></i></strong></div>
+    <img src="{{data.image}}" alt="">
+    <div #btc_overlay class="overlay">
+        <button #btc_qrview>View QR Code</button>
+        <button #btc_addrcp>Copy Address</button>
+        <div class="service-desc">
+            <h3 #btc_address_id>{{data.address}}</h3>
+            <hr>
+            <p>{{data.message.objective}}</p>
+        </div>
+    </div>
+</div>

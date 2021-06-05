@@ -6,7 +6,7 @@
   .title-text p {
     margin: auto;
     font-size: 20px;
-    color: var(--primary);
+    color: var(--secondary);
     font-weight: bold;
     position: relative;
     z-index: 1;
