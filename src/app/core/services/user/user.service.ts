@@ -28,12 +28,6 @@ export class UserService {
     private http: HttpClient,
     private jwtService: JwtService
   ) {
-    this.logger.debug(this.title + " component finished");
-  }
-
-  ngOnInit() {
-    this.logger.debug(this.title + " component started");
-    this.logger.debug(this.title + " component finished");
   }
 
   // Verify JWT in localstorage with server & load user's info.
@@ -71,8 +65,11 @@ export class UserService {
   }
 
   attemptAuth(type: any, credentials: any): Observable<UserModel> {
-    const route = (type === 'login') ? '/login' : '';
-    return this.apiService.post(this.jwtUrl, '/users' + route, {user: credentials})
+    const route = (type === 'login') ? '/login' : '/register';
+    const header:any = { 
+      'Content-Type': 'application/json'
+    }
+    return this.apiService.post(this.jwtUrl, '/auth' + route, credentials, header)
       .pipe(map(
       data => {
         this.setAuth(data.user);

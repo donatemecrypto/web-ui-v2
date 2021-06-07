@@ -12,8 +12,8 @@
           <fieldset [disabled]="isSubmitting">
             <fieldset class="form-group">
               <input
-                formControlName="username"
-                placeholder="Username"
+                formControlName="name"
+                placeholder="Name"
                 class="form-control form-control-lg"
                 type="text"
                 *ngIf="authType == 'register'" />
@@ -31,6 +31,14 @@
                 placeholder="Password"
                 class="form-control form-control-lg"
                 type="password" />
+            </fieldset>
+            <fieldset class="form-group">
+            <input
+                formControlName="password_confirmation"
+                placeholder="Confirm Password"
+                class="form-control form-control-lg"
+                type="text"
+                *ngIf="authType == 'register'" />
             </fieldset>
             <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
               {{ title }}

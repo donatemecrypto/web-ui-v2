@@ -40,11 +40,12 @@ export class ApiService {
     ).pipe(catchError(this.formatErrors));
   }
 
-  post(endpoint:string, path: string, body: Object = {}): Observable<any> {
-    this.logger.info("api-call", "POST",`${endpoint}${path}`, body);
+  post(endpoint:string, path: string, body: Object = {}, headers: HttpHeaders = new HttpHeaders()): Observable<any> {
+    this.logger.info("api-call", "POST",`${endpoint}${path}`, body, headers);
     return this.http.post(
       `${endpoint}${path}`,
-      JSON.stringify(body)
+      JSON.stringify(body),
+      { headers }
     ).pipe(catchError(this.formatErrors));
   }
 
