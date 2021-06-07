@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
+import { LogService } from '../../core/logger/log.service';
+
 @Component({
   selector: 'app-navigation-sidenav',
   templateUrl: './sidenav.component.html',
@@ -8,6 +10,11 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class SideNavComponent implements AfterViewInit {
   title = 'udon-front-sidenav';
+
+  constructor(
+    private logger: LogService
+  ) {
+  }
 
   @ViewChild('menuBtn') menuBtn!: ElementRef;
   @ViewChild('sideNav') sideNav!: ElementRef;
@@ -28,5 +35,10 @@ export class SideNavComponent implements AfterViewInit {
           menu.src = "assets/images/menu.png";
       }
     }
+  }
+
+  ngOnInit() {
+    this.logger.debug(this.title + " component started");
+    this.logger.debug(this.title + " component finished");
   }
 }

@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 import { HomeComponent } from '../home.component';
+import { LogService } from '../../../core/logger/log.service';
 
 @Component({
     selector: 'app-home-qrcode',
@@ -9,12 +10,14 @@ import { HomeComponent } from '../home.component';
 })
 
 export class QrCodeComponent {
-
+    title = 'udon-front-qr';
+    
     @Input() data:any;
 
     public cryptoData:any;
 
     constructor(
+        private logger: LogService,
         private homeComponent: HomeComponent
     ) { 
         this.cryptoData = this.homeComponent.cryptoData;
@@ -65,5 +68,10 @@ export class QrCodeComponent {
             document.body.removeChild(el);
     
         }
+    }
+
+    ngOnInit() {
+        this.logger.debug(this.title + " component started");
+        this.logger.debug(this.title + " component finished");
     }
 }

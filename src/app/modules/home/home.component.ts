@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AppConfig } from '../../app.config';
+import { LogService } from '../../core/logger/log.service';
 import { RestService } from '../../core/services';
 
 
@@ -12,17 +13,20 @@ import { RestService } from '../../core/services';
 })
 
 export class HomeComponent implements OnInit {
-  
   title = 'udon-front-home';
+  
   protected apiServer:any = AppConfig.settings.apiServer;
   public cryptoData:any;
 
   constructor(
+    private logger: LogService,
     private restservice: RestService
   ) { 
   }
 
   ngOnInit() {
+    this.logger.debug(this.title + " component started");
+
     // call getCryptoData function and leave it (it does not await for it)
     this.getCryptoData().then((message) => {
       // console.log(this.cryptoData[0]);
@@ -32,6 +36,8 @@ export class HomeComponent implements OnInit {
       // display error message if failed
       // console.log("Failed Message from getCryptoData(): "+message)
     });
+
+    this.logger.debug(this.title + " component finished");
   }
 
   async getCryptoData(){

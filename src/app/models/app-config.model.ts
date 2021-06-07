@@ -1,4 +1,4 @@
-export interface IAppConfig {
+export interface AppConfigModel {
     env: {
         name: string;
     };

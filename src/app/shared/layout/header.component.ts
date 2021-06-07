@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { LogService } from '../../core/logger/log.service';
+
 @Component({
   selector: 'app-layout-header',
   templateUrl: './header.component.html',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   title = 'udon-front-header';
+
+  constructor(
+    private logger: LogService
+  ) {
+  }
+
+  ngOnInit() {
+    this.logger.debug(this.title + " component started");
+    this.logger.debug(this.title + " component finished");
+  }
 }

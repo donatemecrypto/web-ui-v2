@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeModule } from './modules/home/home.module';
 import { AppConfig } from './app.config';
-
+import { LogService } from './core/logger/log.service';
 
 import {
   FooterComponent,
@@ -36,10 +36,14 @@ export function initializeApp(appConfig: AppConfig) {
     HttpClientModule
   ],
   providers: [
+    LogService,
     AppConfig,
-       { provide: APP_INITIALIZER,
-         useFactory: initializeApp,
-         deps: [AppConfig], multi: true }
+    { 
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [AppConfig], 
+      multi: true 
+    }
   ],
   bootstrap: [AppComponent]
 })
