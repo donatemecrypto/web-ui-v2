@@ -1,19 +1,12 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeModule } from './modules/home/home.module';
 import { AppConfig } from './app.config';
 import { LogService } from './core/logger/log.service';
 
-import {
-  FooterComponent,
-  HeaderComponent,
-  SideNavComponent,
-  TopNavComponent,
-  SharedModule,
-} from './shared';
+import { SharedModule } from './shared';
 import { AppRoutingModule } from './app-routing.module';
 
 export function initializeApp(appConfig: AppConfig) {
@@ -22,18 +15,13 @@ export function initializeApp(appConfig: AppConfig) {
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    FooterComponent, 
-    HeaderComponent, 
-    SideNavComponent,
-    TopNavComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    HomeModule,
-    HttpClientModule
+    HomeModule
   ],
   providers: [
     LogService,

@@ -6,6 +6,7 @@
         "console": true
     },
     "apiServer": {
-        "cryptodata": "https://sandbox.donatemecrypto.me/crypto.data.json"
+        "cryptodata": "https://sandbox.donatemecrypto.me/crypto.data.json",
+        "jwt": "http://localhost:3000"
     }
 }

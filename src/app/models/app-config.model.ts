@@ -7,5 +7,6 @@ export interface AppConfigModel {
     };
     apiServer: {
         cryptodata: string;
+        jwt: string;
     };
 }
