@@ -3,7 +3,7 @@
         "name": "dev"
     },
     "logging": {
-        "console": true
+        "level": 0
     },
     "apiServer": {
         "cryptodata": "http://localhost:3000",

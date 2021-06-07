@@ -3,10 +3,10 @@
         "name": "prod"
     },
     "logging": {
-        "console": true
+        "level": 6
     },
     "apiServer": {
         "cryptodata": "https://sandbox.donatemecrypto.me/crypto.data.json",
-        "jwt": "http://localhost:3000"
+        "jwt": "https://api.donatemecrypto.me/api"
     }
 }

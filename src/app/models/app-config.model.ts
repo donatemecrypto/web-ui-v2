@@ -3,7 +3,7 @@ export interface AppConfigModel {
         name: string;
     };
     logging: {
-        console: boolean;
+        level: number;
     };
     apiServer: {
         cryptodata: string;

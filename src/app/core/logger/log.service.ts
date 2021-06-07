@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { AppConfig } from '../../app.config';
+
 export enum LogLevel {
     All = 0,
     Debug = 1,
@@ -12,7 +14,11 @@ export enum LogLevel {
 
 @Injectable()
 export class LogService {
-    level: LogLevel = LogLevel.All;
+    title = 'udon-front-loggger';
+  
+    protected loggingLevel:any = AppConfig.settings.logging.level;
+
+    level: LogLevel = this.loggingLevel;
     logWithDate: boolean = true;
 
     private writeToLog(msg: string, level: LogLevel, params: any[]) {
