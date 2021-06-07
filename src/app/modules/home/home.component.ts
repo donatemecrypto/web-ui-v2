@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { AppConfig } from '../../app.config';
 import { LogService } from '../../core/logger/log.service';
-import { RestService } from '../../core/services';
+import { ApiService } from '../../core/services';
 
 
 @Component({
@@ -15,12 +15,12 @@ import { RestService } from '../../core/services';
 export class HomeComponent implements OnInit {
   title = 'udon-front-home';
   
-  protected apiServer:any = AppConfig.settings.apiServer;
+  protected cryptoDataUrl:any = AppConfig.settings.apiServer.cryptodata;
   public cryptoData:any;
 
   constructor(
     private logger: LogService,
-    private restservice: RestService
+    private apiservice: ApiService
   ) { 
   }
 
@@ -43,14 +43,17 @@ export class HomeComponent implements OnInit {
   async getCryptoData(){
     // it will wait for restservice.getCryptoData() to get response first 
      await new Promise((resolve, reject) => {
-      this.restservice.getCryptoData().subscribe((res: any) => {
-        if (res) {
-          this.cryptoData = res.content;
-          resolve("success")
-        } else {
-          reject("failed");
-        }
-      })
+      let path: string;
+      this.apiservice.get(this.cryptoDataUrl,path='/data')
+        .subscribe((res: any) => {
+          if (res) {
+            this.cryptoData = res.content;
+            resolve("success")
+          } else {
+            reject("failed");
+          }
+          this.logger.info("api-call","RESPONSE",`${this.cryptoDataUrl}${path}`,res);
+        });
     });
   }
 }

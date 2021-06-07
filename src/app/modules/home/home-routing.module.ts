@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
-import { RestService } from '../../core/services';
+import { ApiService } from '../../core/services';
 
 const routes: Routes = [
   {
