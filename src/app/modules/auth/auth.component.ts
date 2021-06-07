@@ -5,10 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../core/services/user';
 import { ErrorsModel } from '../../models/errors.model';
 
-
 @Component({
   selector: 'app-auth-page',
-  templateUrl: './auth.component.html'
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
   authType: String = '';

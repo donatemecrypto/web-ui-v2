@@ -2,7 +2,8 @@
     background: linear-gradient(rgba(0, 0, 0, 0.5), var(--primary)), url("../../../assets/images/banner.jpg");
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    margin-bottom: 100px;
+    /* height: 100vh; */
   }
   
   .logo {
@@ -15,7 +16,7 @@
   .banner-text {
     text-align: center;
     color: #fff;
-    padding-top: 180px;
+    padding-top: 100px;
   }
   
   .banner-text h1 {
