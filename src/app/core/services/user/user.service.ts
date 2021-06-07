@@ -7,9 +7,13 @@ import { ApiService } from '../api.service';
 import { JwtService } from '../jwt.service';
 import { UserModel } from '../../../models/user.model';
 import { AppConfig } from '../../../app.config';
+import { LogService } from '../../../core/logger/log.service';
+
 
 @Injectable()
 export class UserService {
+  title = 'cryto-front-user-service';
+
   private currentUserSubject = new BehaviorSubject<UserModel>({} as UserModel);
   public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
 
@@ -19,10 +23,18 @@ export class UserService {
   protected jwtUrl:any = AppConfig.settings.apiServer.jwt;
 
   constructor (
+    private logger: LogService,
     private apiService: ApiService,
     private http: HttpClient,
     private jwtService: JwtService
-  ) {}
+  ) {
+    this.logger.debug(this.title + " component finished");
+  }
+
+  ngOnInit() {
+    this.logger.debug(this.title + " component started");
+    this.logger.debug(this.title + " component finished");
+  }
 
   // Verify JWT in localstorage with server & load user's info.
   // This runs once on application startup.
