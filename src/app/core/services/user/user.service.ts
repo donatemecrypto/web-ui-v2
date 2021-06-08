@@ -6,6 +6,7 @@ import { map ,  distinctUntilChanged } from 'rxjs/operators';
 import { ApiService } from '../api.service';
 import { JwtService } from '../jwt.service';
 import { UserModel } from '../../../models/user.model';
+import { JwtModel } from '../../../models/jwt.model';
 import { AppConfig } from '../../../app.config';
 import { LogService } from '../../../core/logger/log.service';
 
@@ -35,9 +36,11 @@ export class UserService {
   populate() {
     // If JWT detected, attempt to get & store user's info
     if (this.jwtService.getToken()) {
-      this.apiService.get(this.jwtUrl,'/user')
+      const header:any = { "Authorization": "Bearer " + this.jwtService.getToken() }
+      this.apiService.get(this.jwtUrl, '/auth/profile', undefined , header)      
       .subscribe(
-        data => this.setAuth(data.user),
+        // Set current user data 
+        data => this.setUser(data),
         err => this.purgeAuth()
       );
     } else {
@@ -46,9 +49,20 @@ export class UserService {
     }
   }
 
-  setAuth(user: UserModel) {
+  setAuth(jwt: JwtModel) {
     // Save JWT sent from server in localstorage
-    this.jwtService.saveToken(user.token);
+    this.jwtService.saveToken(jwt.token);
+    // call User profile
+    const header:any = { "Authorization": "Bearer " + jwt.token }
+    this.apiService.get(this.jwtUrl, '/auth/profile', undefined , header)
+    .subscribe(
+      // Set current user data 
+      data => this.setUser(data),
+      err => this.purgeAuth()
+    );
+  }
+
+  setUser(user: UserModel) {
     // Set current user data into observable
     this.currentUserSubject.next(user);
     // Set isAuthenticated to true
@@ -71,9 +85,9 @@ export class UserService {
     }
     return this.apiService.post(this.jwtUrl, '/auth' + route, credentials, header)
       .pipe(map(
-      data => {
-        this.setAuth(data.user);
-        return data;
+      jwt => {
+        this.setAuth(jwt.data);
+        return jwt;
       }
     ));
   }
@@ -86,10 +100,10 @@ export class UserService {
   update(user:any): Observable<UserModel> {
     return this.apiService
     .put(this.jwtUrl, '/user', { user })
-    .pipe(map(data => {
+    .pipe(map(jwt => {
       // Update the currentUser observable
-      this.currentUserSubject.next(data.user);
-      return data.user;
+      this.currentUserSubject.next(jwt.user);
+      return jwt.user;
     }));
   }
 

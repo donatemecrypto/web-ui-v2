@@ -1,7 +1,8 @@
 export interface UserModel {
+  id: number;
+  name: string;
   email: string;
-  token: string;
-  username: string;
-  bio: string;
-  image: string;
+  email_verified_at: string;
+  created_at: string;
+  updated_at: string;
 }

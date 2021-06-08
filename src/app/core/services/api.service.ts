@@ -26,9 +26,10 @@ export class ApiService {
     return  throwError(error.error);
   }
 
-  get(endpoint:string, path: string, params: HttpParams = new HttpParams()): Observable<any> {
-    this.logger.info("api-call", "GET",`${endpoint}${path}`, params);
-    return this.http.get(`${endpoint}${path}`, { params })
+  get(endpoint:string, path: string, params:any = undefined, headers: HttpHeaders = new HttpHeaders()): Observable<any> {
+    let query = (params) ? "?" + new URLSearchParams(params).toString() : '';
+    this.logger.info("api-call", "GET",`${endpoint}${path}`, query, headers);
+    return this.http.get(`${endpoint}${path}` + query, { headers })
       .pipe(catchError(this.formatErrors));
   }
 

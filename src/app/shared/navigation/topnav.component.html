@@ -3,7 +3,9 @@
       <li><a routerLink="/">Home</a></li>
       <li><a >About Us</a></li>
       <li><a >Contact Us</a></li>
-      <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-      <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
+      <li *appShowAuthed="false"><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      <li *appShowAuthed="false"><a routerLink="/register" routerLinkActive="active">Register</a></li>
+      <li *appShowAuthed="true"><span>Hi, {{ currentUser.name }} </span></li>
+      <li *appShowAuthed="true"><a href="#" (click)="logout()">Logout</a></li>
   </ul>
 </div>

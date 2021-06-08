@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListErrorsComponent } from './modal/list-errors.component';
 import { HeaderComponent, FooterComponent } from './layout';
 import { TopNavComponent, SideNavComponent } from './navigation';
+import { ShowAuthedDirective } from './directive/show-authed.directive';
+
 
 @NgModule({
     imports: [
@@ -23,7 +25,8 @@ import { TopNavComponent, SideNavComponent } from './navigation';
       HeaderComponent,
       TopNavComponent,
       SideNavComponent,
-      ListErrorsComponent
+      ListErrorsComponent,
+      ShowAuthedDirective
     ],
     exports: [
       CommonModule,
@@ -35,7 +38,8 @@ import { TopNavComponent, SideNavComponent } from './navigation';
       HeaderComponent,
       TopNavComponent,
       SideNavComponent,
-      ListErrorsComponent
+      ListErrorsComponent,
+      ShowAuthedDirective
     ]
   })
   export class SharedModule {}

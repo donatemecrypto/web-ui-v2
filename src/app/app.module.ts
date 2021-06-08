@@ -20,6 +20,7 @@ import { JwtService } from './core/services/jwt.service';
 import { SharedModule } from './shared';
 import { HomeModule } from './modules/home/home.module';
 import { AuthModule } from './modules/auth/auth.module';
+
 import { AppRoutingModule } from './app-routing.module';
 
 export function initializeApp(appConfig: AppConfig) {
